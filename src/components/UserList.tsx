@@ -9,7 +9,7 @@ const UserList = ({ users }: UserListProps) => {
     return (
         <>
             {users.map((user) => (
-                <UserCard user={user}></UserCard>
+                <UserCard key={user.id} user={user}></UserCard>
             ))}
         </>
     );
