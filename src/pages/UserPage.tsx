@@ -5,19 +5,32 @@ import UserList from "../components/UserList";
 const UserPage = () => {
     const {
         data: users,
-        isLoading,
+        isPending,
+        isError,
         error,
     } = useQuery({
         queryKey: ["users"],
         queryFn: fetchUsers,
     });
 
-    if (isLoading) return <p>Laddar användare...</p>;
-    if (error) return <p>{error.message}</p>;
+    if (isPending)
+        return (
+            <p className="p-8 text-center text-slate-500">
+                Laddar användare...
+            </p>
+        );
+    if (isError)
+        return <p className="p-8 text-center text-rose-600">{error.message}</p>;
+    if (users.length === 0)
+        return (
+            <p className="p-8 text-center text-slate-600">
+                Inga användare hittades
+            </p>
+        );
 
     return (
         <>
-            <div className="mx-auto max-w-6x1 px-4 py-8 ">
+            <div className="mx-auto max-w-6xl px-4 py-8 ">
                 <UserList users={users}></UserList>
             </div>
         </>

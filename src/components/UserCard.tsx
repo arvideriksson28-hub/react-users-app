@@ -1,6 +1,6 @@
 import type { User } from "../types/User";
 
-interface UserCardProp {
+interface UserCardProps {
     user: User;
 }
 
@@ -23,17 +23,18 @@ const roleStyles: Record<string, string> = {
     admin: "bg-rose-50 text-rose-700 ring-rose-600/20",
     editor: "bg-amber-50 text-amber-700 ring-amber-600/20",
     user: "bg-slate-50 text-slate-600 ring-slate-500/20",
+    support: "bg-blue-50 text-blue-600 ring-blue-500/20",
 };
 
 const defaultRoleStyle = "bg-indigo-50 text-indigo-700 ring-indigo-600/20";
 
 function getInitials(name: string): string {
     return name
-        .split(" ")
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((part) => part[0].toUpperCase())
-        .join("");
+        .split(" ") // "Arvid Eriksson -> ["Arvid", "Eriksson"]"
+        .filter(Boolean) //tar bort tomma strängar (om det finns)
+        .slice(0, 2) //de två första -> ["Arvid", "Eriksson"]
+        .map((part) => part[0].toUpperCase()) //["A", "E"]
+        .join(""); // -> "AE"
 }
 
 function SettingPill({ label, enabled }: SettingPillProps) {
@@ -50,7 +51,7 @@ function SettingPill({ label, enabled }: SettingPillProps) {
     );
 }
 
-export default function UserCard({ user }: UserCardProp) {
+export default function UserCard({ user }: UserCardProps) {
     const { profile, settings, roles, username, id } = user;
     const avatarColor = avatarColors[id % avatarColors.length];
     const isDarkTheme = settings.theme.toLowerCase() === "dark";
