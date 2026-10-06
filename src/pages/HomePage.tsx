@@ -1,7 +1,7 @@
 const HomePage = () => {
     return (
         <div>
-            <h2>Hem</h2>
+            <h2 className="text-3x1 font-bold text-blue-600">Hem</h2>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
                 voluptatibus quasi quidem dolor obcaecati nobis quo blanditiis,
