@@ -17,8 +17,9 @@ const UserPage = () => {
 
     return (
         <>
-            <h1>Användare</h1>
-            <UserList users={users}></UserList>
+            <div className="mx-auto max-w-6x1 px-4 py-8 ">
+                <UserList users={users}></UserList>
+            </div>
         </>
     );
 };

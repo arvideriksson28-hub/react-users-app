@@ -8,9 +8,11 @@ interface UserListProps {
 const UserList = ({ users }: UserListProps) => {
     return (
         <>
-            {users.map((user) => (
-                <UserCard key={user.id} user={user}></UserCard>
-            ))}
+            <div className="flex flex-wrap justify-center gap-10 ">
+                {users.map((user) => (
+                    <UserCard key={user.id} user={user}></UserCard>
+                ))}
+            </div>
         </>
     );
 };
